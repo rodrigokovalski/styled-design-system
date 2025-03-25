@@ -87,7 +87,8 @@ Copie e utilize as configurações do arquivo `tsconfig.json` deste projeto:
 
 ---
 
-🛠 Instalação de Dependências
+## 🛠 Instalação de Dependências
+
 Para garantir que o React já esteja presente na aplicação onde essa biblioteca será utilizada, instale as dependências como devDependencies:
 
 ```sh
@@ -97,7 +98,8 @@ Isso evita a duplicação desnecessária dessas dependências no projeto final.
 
 ---
 
-🔧 Atualização dos Scripts no package.json
+## 🔧 Atualização dos Scripts no package.json
+
 No arquivo package.json, atualize os scripts para:
 
 ```json
