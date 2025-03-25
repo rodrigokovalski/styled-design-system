@@ -152,6 +152,19 @@ Isso criará a pasta `.changeset/`, onde ficarão armazenadas as alterações fe
 
 ## 🚀 Deploy do Pacote no npm
 
+No arquivo package.json, é necessário indicar quais arquivos serão usados no build final. Adicione as seguintes entradas para garantir que o pacote tenha uma versão adequada para ambientes CommonJS e ES Modules:
+
+```sh
+{
+  "main": "dist/index.js",
+  "module": "dist/index.mjs"
+}
+```
+
+### "main" aponta para o arquivo gerado no formato CommonJS (.js), usado em ambientes Node.js mais antigos ou projetos que não suportam ES Modules.
+
+### "module" aponta para o arquivo gerado no formato ES Module (.mjs), ideal para projetos que utilizam a sintaxe import/export nativa.
+
 O `changeset` facilita a publicação de novas versões do Design System no npm. O fluxo de publicação segue os passos:
 
 1. Crie um novo registro de alteração:
