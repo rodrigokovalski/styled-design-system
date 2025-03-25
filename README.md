@@ -1,56 +1,79 @@
-# Configuração do Design system
+# 📖 Guia de Configuração do Design System
 
-Este guia descreve os passos para configurar um projeto de design system do zero, incluindo a instalação de dependências e a configuração do ambiente.
+Este documento fornece um passo a passo detalhado para configurar um projeto de Design System do zero, incluindo a instalação de dependências e a configuração do ambiente.
 
 ---
 
-## 📁 Criando Estrutura Básica
-
+## 📁 Criando a Estrutura Básica
 
 ### 1️⃣ Inicialização do Projeto
-Crie um arquivo `package.json` com configurações padrão:
+O primeiro passo é criar um arquivo `package.json`, que armazenará informações sobre o projeto e suas dependências.
+
+Execute o seguinte comando para gerar automaticamente um `package.json` com configurações padrão:
+
 ```sh
 npm init -y
 ```
 
+---
+
 ### 2️⃣ Instalação do TypeScript
-Adicione o TypeScript como dependência de desenvolvimento:
+
+O TypeScript é uma ferramenta essencial para um Design System, pois fornece tipagem estática e maior segurança no código. Para instalá-lo como dependência de desenvolvimento, use:
+
 ```sh
 npm i typescript -D
 ```
 
+---
+
 ### 3️⃣ Configuração do TypeScript
-Gere um arquivo `tsconfig.json` com configurações padrão:
+
+Agora, precisamos configurar o TypeScript. Para isso, gere um arquivo `tsconfig.json` com configurações padrão:
+
 ```sh
 npx tsc --init
 ```
 
-Para testar a compilação dos arquivos `.tsx` e `.mjs`, execute:
+Para testar se a compilação de arquivos TypeScript está funcionando corretamente, utilize:
+
 ```sh
 npx tsc
 ```
 
+Isso compilará os arquivos `.tsx` e `.mjs` dentro do projeto.
+
+---
+
 ### 4️⃣ Instalando o Bundler (Tsup)
-O `tsup` é uma ferramenta de empacotamento que converte TypeScript em diferentes formatos de JavaScript, incluindo a geração de arquivos de definição `.d.ts`:
+
+O `tsup` é uma ferramenta leve e eficiente para empacotamento de arquivos TypeScript. Ele gera código nos formatos `ESM` e `CJS`, além de criar automaticamente os arquivos de definição `.d.ts`.
+
+Instale o `tsup` com:
+
 ```sh
 npm i tsup -D
 ```
 
+---
+
 ### 5️⃣ Adicionando Scripts ao `package.json`
-Para rodar o `tsup` automaticamente nos modos de build e desenvolvimento, adicione os seguintes scripts ao `package.json`:
+
+Agora, adicionamos scripts no `package.json` para facilitar a execução do bundler:
+
 ```json
 "scripts": {
   "build": "tsup src/index.ts --format esm,cjs --dts"
 }
 ```
 
-Isso criará a pasta `dist/` contendo os arquivos gerados.
+Este comando criará a pasta `dist/` contendo os arquivos gerados a partir do código TypeScript.
 
 ---
 
 ## ⚙️ Configurando o TypeScript
 
-Copie e utilize as configurações do arquivo `tsconfig.json` deste projeto:
+Para garantir que o TypeScript funcione corretamente no projeto, utilize as seguintes configurações no `tsconfig.json`:
 
 ```json
 {
@@ -69,38 +92,34 @@ Copie e utilize as configurações do arquivo `tsconfig.json` deste projeto:
     "skipLibCheck": true,
     "strict": true,
     "jsx": "react-jsx",
-    "lib": [
-      "dom",
-      "ES2015"
-    ],
+    "lib": ["dom", "ES2015"],
     "module": "ESNext",
     "target": "es6"
   },
-  "exclude": [
-    "node_modules"
-  ],
-  "include": [
-    "src"
-  ]
+  "exclude": ["node_modules"],
+  "include": ["src"]
 }
 ```
+
+Isso garante compatibilidade com React e ECMAScript moderno.
 
 ---
 
 ## 🛠 Instalação de Dependências
 
-Para garantir que o React já esteja presente na aplicação onde essa biblioteca será utilizada, instale as dependências como devDependencies:
+Como queremos evitar que as dependências do Design System sejam duplicadas no projeto final, devemos instalá-las como `devDependencies`:
 
 ```sh
 npm i react @types/react @types/react-dom -D
 ```
-Isso evita a duplicação desnecessária dessas dependências no projeto final.
+
+Isso impede que o React seja incluído na build final do Design System, evitando conflitos com os projetos que utilizam a biblioteca.
 
 ---
 
-## 🔧 Atualização dos Scripts no package.json
+## 🔧 Atualização dos Scripts no `package.json`
 
-No arquivo package.json, atualize os scripts para:
+Para garantir que o `tsup` exclua corretamente o React da build e facilite o desenvolvimento, atualizamos os scripts no `package.json`:
 
 ```json
 "scripts": {
@@ -109,4 +128,57 @@ No arquivo package.json, atualize os scripts para:
 }
 ```
 
-Isso garante que o tsup compile corretamente o projeto, excluindo react da build para evitar conflitos.
+Isso garante que a biblioteca seja gerada corretamente sem incluir dependências desnecessárias na build.
+
+---
+
+## 🔧 Instalação e Configuração do Changeset
+
+O `changeset` é uma ferramenta para gerenciar versões e changelogs de pacotes. Para instalá-lo, utilize:
+
+```sh
+npm i @changesets/cli -D
+```
+
+Inicialize o sistema de controle de versões:
+
+```sh
+npx changeset init
+```
+
+Isso criará a pasta `.changeset/`, onde ficarão armazenadas as alterações feitas no projeto.
+
+---
+
+## 🚀 Deploy do Pacote no npm
+
+O `changeset` facilita a publicação de novas versões do Design System no npm. O fluxo de publicação segue os passos:
+
+1. Crie um novo registro de alteração:
+
+   ```sh
+   npm run changeset
+   ```
+
+   Isso criará um arquivo dentro da pasta `.changeset/` com um resumo das alterações feitas.
+
+2. Atualize a versão do pacote e gere o changelog:
+
+   ```sh
+   npm run version-packages
+   ```
+
+   Esse comando ajusta a versão do `package.json` e atualiza o changelog do projeto.
+
+3. Publique a nova versão no npm:
+
+   ```sh
+   npm run release
+   ```
+
+   O pacote será publicado de acordo com a versão especificada.
+
+---
+
+Com esses passos, seu Design System estará configurado e pronto para uso! 🚀
+
