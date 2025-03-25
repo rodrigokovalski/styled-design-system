@@ -1,5 +1,11 @@
 # @rodrigokovalski-ui/components
 
+## 1.1.0
+
+### Minor Changes
+
+- Adicionando styled components à nossa aplicação
+
 ## 1.0.5
 
 ### Patch Changes

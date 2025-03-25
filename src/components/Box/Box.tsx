@@ -1,3 +1,5 @@
+import { StyledBox } from "./Box.styles";
+
 export function Box() {
-    return <div>EU SOU UMA CAIXA AAAA</div>
+    return <StyledBox>EU SOU UMA CAIXA AAAA</StyledBox>
 }
