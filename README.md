@@ -86,3 +86,25 @@ Copie e utilize as configurações do arquivo `tsconfig.json` deste projeto:
 ```
 
 ---
+
+🛠 Instalação de Dependências
+Para garantir que o React já esteja presente na aplicação onde essa biblioteca será utilizada, instale as dependências como devDependencies:
+
+```sh
+npm i react @types/react @types/react-dom -D
+```
+Isso evita a duplicação desnecessária dessas dependências no projeto final.
+
+---
+
+🔧 Atualização dos Scripts no package.json
+No arquivo package.json, atualize os scripts para:
+
+```json
+"scripts": {
+  "build": "tsup src/index.ts --format esm,cjs --dts --external react",
+  "dev": "tsup src/index.ts --format esm,cjs --dts --external react --watch"
+}
+```
+
+Isso garante que o tsup compile corretamente o projeto, excluindo react da build para evitar conflitos.
