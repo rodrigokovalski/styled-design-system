@@ -160,10 +160,9 @@ No arquivo package.json, é necessário indicar quais arquivos serão usados no 
   "module": "dist/index.mjs"
 }
 ```
+> "main" aponta para o arquivo gerado no formato CommonJS (.js), usado em ambientes Node.js mais antigos ou projetos que não suportam ES Modules.
+> "module" aponta para o arquivo gerado no formato ES Module (.mjs), ideal para projetos que utilizam a sintaxe import/export nativa.
 
-### "main" aponta para o arquivo gerado no formato CommonJS (.js), usado em ambientes Node.js mais antigos ou projetos que não suportam ES Modules.
-
-### "module" aponta para o arquivo gerado no formato ES Module (.mjs), ideal para projetos que utilizam a sintaxe import/export nativa.
 
 O `changeset` facilita a publicação de novas versões do Design System no npm. O fluxo de publicação segue os passos:
 
