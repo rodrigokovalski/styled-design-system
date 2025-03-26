@@ -307,3 +307,7 @@ Se tudo estiver configurado corretamente, o Husky executará o Lint-Staged antes
 ---
 
 Agora seu projeto está protegido contra commits de código não formatado! 🚀
+
+# Configurando Storybook
+
+> npm create storybook@latest
