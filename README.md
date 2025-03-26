@@ -7,6 +7,7 @@ Este documento fornece um passo a passo detalhado para configurar um projeto de 
 ## 📁 Criando a Estrutura Básica
 
 ### 1️⃣ Inicialização do Projeto
+
 O primeiro passo é criar um arquivo `package.json`, que armazenará informações sobre o projeto e suas dependências.
 
 Execute o seguinte comando para gerar automaticamente um `package.json` com configurações padrão:
@@ -77,27 +78,27 @@ Para garantir que o TypeScript funcione corretamente no projeto, utilize as segu
 
 ```json
 {
-  "compilerOptions": {
-    "composite": false,
-    "declaration": true,
-    "declarationMap": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "inlineSources": false,
-    "isolatedModules": true,
-    "moduleResolution": "node",
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "preserveWatchOutput": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "jsx": "react-jsx",
-    "lib": ["dom", "ES2015"],
-    "module": "ESNext",
-    "target": "es6"
-  },
-  "exclude": ["node_modules"],
-  "include": ["src"]
+    "compilerOptions": {
+        "composite": false,
+        "declaration": true,
+        "declarationMap": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "inlineSources": false,
+        "isolatedModules": true,
+        "moduleResolution": "node",
+        "noUnusedLocals": false,
+        "noUnusedParameters": false,
+        "preserveWatchOutput": true,
+        "skipLibCheck": true,
+        "strict": true,
+        "jsx": "react-jsx",
+        "lib": ["dom", "ES2015"],
+        "module": "ESNext",
+        "target": "es6"
+    },
+    "exclude": ["node_modules"],
+    "include": ["src"]
 }
 ```
 
@@ -160,6 +161,7 @@ No arquivo package.json, é necessário indicar quais arquivos serão usados no 
   "module": "dist/index.mjs"
 }
 ```
+
 > "main" aponta para o arquivo gerado no formato CommonJS (.js), usado em ambientes Node.js mais antigos ou projetos que não suportam ES Modules.
 
 > "module" aponta para o arquivo gerado no formato ES Module (.mjs), ideal para projetos que utilizam a sintaxe import/export nativa.
@@ -170,39 +172,75 @@ O `changeset` facilita a publicação de novas versões do Design System no npm.
 
 1. Crie um novo registro de alteração:
 
-   ```sh
-   npm run changeset
-   ```
+    ```sh
+    npm run changeset
+    ```
 
-   Isso criará um arquivo dentro da pasta `.changeset/` com um resumo das alterações feitas.
+    Isso criará um arquivo dentro da pasta `.changeset/` com um resumo das alterações feitas.
 
 2. Atualize a versão do pacote e gere o changelog:
 
-   ```sh
-   npm run version-packages
-   ```
+    ```sh
+    npm run version-packages
+    ```
 
-   Esse comando ajusta a versão do `package.json` e atualiza o changelog do projeto.
+    Esse comando ajusta a versão do `package.json` e atualiza o changelog do projeto.
 
 3. Publique a nova versão no npm:
 
-   ```sh
-   npm run release
-   ```
+    ```sh
+    npm run release
+    ```
 
-   O pacote será publicado de acordo com a versão especificada.
+    O pacote será publicado de acordo com a versão especificada.
 
 ---
 
 Com esses passos, seu Design System estará configurado e pronto para uso! 🚀
 
-
-
----
 ---
 
-## 🚀 Adding Elist and Prettier
+---
 
-> npm init @eslint/config@latest
+# 🚀 Configurando ESLint e Prettier
 
-As configurações estão no arquivo eslint.config.mjs
+## 📌 Instalando e Configurando o ESLint
+
+Execute o seguinte comando para iniciar a configuração do ESLint:
+
+```sh
+npm init @eslint/config@latest
+```
+
+As configurações geradas serão armazenadas no arquivo `eslint.config.mjs`.
+
+---
+
+## 🎨 Instalando e Configurando o Prettier
+
+Instale o Prettier como dependência de desenvolvimento:
+
+```sh
+npm install prettier -D
+```
+
+### 🔧 Configuração no Editor
+
+1. Vá até as configurações do VS Code (`Ctrl + ,`).
+2. Em **Format**, defina o **Default Formatter** como `Prettier Formatter`.
+3. Ative a opção **Format on Save** para que o código seja formatado automaticamente ao salvar.
+
+### 📄 Criando o Arquivo de Configuração
+
+Crie um arquivo `.prettierrc` na raiz do projeto para definir as regras de formatação do Prettier.
+
+Exemplo de configuração mínima:
+
+```json
+{
+    "singleQuote": true,
+    "semi": false
+}
+```
+
+Agora seu ambiente está pronto para manter o código limpo e padronizado! 🚀

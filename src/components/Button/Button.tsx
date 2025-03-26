@@ -1,5 +1,5 @@
-import { colors } from "../../tokens";
+import { colors } from '../../tokens'
 
 export function Button() {
-    return <div style={{ color: colors.primary }}>Asdfasdfasdfaqui</div>
+    return <div style={{ color: colors.primary }}>Asd fasdfasdfaqui</div>
 }

@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { colors } from "../../tokens";
+import styled from 'styled-components'
+import { colors } from '../../tokens'
 
 export const StyledBox = styled.div`
     padding: 16px 24px;
