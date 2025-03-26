@@ -11,7 +11,8 @@
         "version-packages": "changeset version",
         "release": "npm run build && changeset publish",
         "lint": "eslint src/**/*.ts* --fix",
-        "format": "prettier . --write"
+        "format": "prettier . --write",
+        "prepare": "husky"
     },
     "keywords": [],
     "author": "",
@@ -24,6 +25,8 @@
         "eslint": "^9.23.0",
         "eslint-plugin-react": "^7.37.4",
         "globals": "^16.0.0",
+        "husky": "^9.1.7",
+        "lint-staged": "^15.5.0",
         "prettier": "^3.5.3",
         "react": "^19.0.0",
         "styled-components": "^6.1.16",
@@ -33,5 +36,9 @@
     },
     "peerDependencies": {
         "styled-components": "^6.1.16"
+    },
+    "lint-staged": {
+        "src/**/*.{ts*,css}": "prettier --write",
+        "src/**/*.ts*": "eslint"
     }
 }

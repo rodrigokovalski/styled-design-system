@@ -244,3 +244,14 @@ Exemplo de configuração mínima:
 ```
 
 Agora seu ambiente está pronto para manter o código limpo e padronizado! 🚀
+
+# 🚀 Configurando husky
+
+> npm install husky -D
+
+> npm install lint-staged -D
+
+"lint-staged": {
+"src/**/_.{ts_,css}": "prettier --write",
+"src/**/_.ts_": "eslint --fix"
+}
