@@ -196,3 +196,13 @@ O `changeset` facilita a publicação de novas versões do Design System no npm.
 
 Com esses passos, seu Design System estará configurado e pronto para uso! 🚀
 
+
+
+---
+---
+
+## 🚀 Adding Elist and Prettier
+
+> npm init @eslint/config@latest
+
+As configurações estão no arquivo eslint.config.mjs
