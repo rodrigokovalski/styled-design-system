@@ -245,13 +245,65 @@ Exemplo de configuração mínima:
 
 Agora seu ambiente está pronto para manter o código limpo e padronizado! 🚀
 
-# 🚀 Configurando husky
+# 🚀 Configurando Husky e Lint-Staged
 
-> npm install husky -D
+Este guia fornece um passo a passo para configurar o [Husky](https://typicode.github.io/husky) e o [Lint-Staged](https://github.com/okonet/lint-staged) em seu projeto.
 
-> npm install lint-staged -D
+## 📌 Instalação
 
-"lint-staged": {
-"src/**/_.{ts_,css}": "prettier --write",
-"src/**/_.ts_": "eslint --fix"
+Execute os seguintes comandos para instalar as dependências necessárias:
+
+```sh
+npm install husky -D
+npm install lint-staged -D
+```
+
+## 🔧 Configuração do Husky
+
+Após a instalação, ative o Husky executando:
+
+```sh
+npx husky init
+```
+
+Adicione o seguinte script no `package.json` para garantir que o Husky seja instalado ao clonar o repositório:
+
+```json
+"scripts": {
+  "prepare": "husky install"
 }
+```
+
+Para criar um hook de pré-commit, use no arquivo `.husky/pre-commit`:
+
+```sh
+npx lint-staged
+```
+
+## ✨ Configuração do Lint-Staged
+
+Adicione a seguinte configuração no `package.json`:
+
+```json
+"lint-staged": {
+  "src/**/*.{ts,css}": "prettier --write",
+  "src/**/*.ts": "eslint --fix"
+}
+```
+
+Isso garante que, antes de um commit, os arquivos TypeScript e CSS sejam formatados com Prettier, e os arquivos TypeScript sejam corrigidos automaticamente pelo ESLint.
+
+## ✅ Testando a Configuração
+
+Para testar, modifique alguns arquivos e tente fazer um commit:
+
+```sh
+git add .
+git commit -m "Testando Husky e Lint-Staged"
+```
+
+Se tudo estiver configurado corretamente, o Husky executará o Lint-Staged antes do commit, garantindo que seu código esteja bem formatado e livre de erros de linting.
+
+---
+
+Agora seu projeto está protegido contra commits de código não formatado! 🚀
