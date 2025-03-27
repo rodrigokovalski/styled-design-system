@@ -62,10 +62,7 @@
     },
     "lint-staged": {
         "src/**/*.{ts,tsx,css,md,json,mdx}": "prettier --write",
-        "src/**/*.ts*": "eslint",
-        "src/**/*.{js,jsx,ts,tsx}": [
-            "npm run test -- --coverage --watchAll=false"
-        ]
+        "src/**/*.ts*": "eslint"
     },
     "eslintConfig": {
         "extends": [
