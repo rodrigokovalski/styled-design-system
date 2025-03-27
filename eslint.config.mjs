@@ -27,7 +27,6 @@ export default defineConfig([
             'no-unused-vars': 'warn',
             '@typescript-eslint/no-unused-vars': 'off',
             'react/react-in-jsx-scope': 'off',
-            'capitalized-comments': ['error', 'always'],
         },
     },
 ])

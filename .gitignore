@@ -5,3 +5,5 @@
 /storybook-static
 *storybook.log
 *.tgz
+
+/coverage

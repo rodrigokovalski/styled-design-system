@@ -316,3 +316,54 @@ Escolha a opção sem testes, pois utilizaremos jest e testing library para isso
 Ele buscará pelos arquivos .stories e .mdx dentro de src, onde documentaremos nossos componentes em suas respectivas pastas.
 
 Para evitar que arquivos .husky ou .storybook sejam incluídos em nosso pacote, adicione o arquivo `.npmignore`
+
+# Configurando Jest and testing library
+
+```sh
+npm install jest ts-node @types/jest @swc/core @swc/jest -D
+
+npx jest --init
+
+```
+
+configure a opção no jest.config.ts
+
+transform: {
+'^.+\\.(t|j)sx?$': [
+'@swc/jest',
+{
+jsc: {
+parser: {
+syntax: 'typescript',
+tsx: true,
+decorators: true,
+},
+keepClassNames: true,
+transform: {
+legacyDecorator: true,
+decoratorMetadata: true,
+react: {
+runtime: 'automatic',
+},
+},
+},
+module: {
+type: 'es6',
+noInterop: false,
+},
+},
+],
+},
+
+```sh
+npm i @testing-library/react @testing-library/jest-dom @testing-library/user-event jest-environment-jsdom -D
+```
+
+Crie uma pasta em src/test/setup.ts
+
+dentro desse arquivo adicione
+
+import '@testing-library/jest-dom'
+
+e no arquivo de jest.config.ts adicione
+setupFilesAfterEnv: ['<rootDir>/src/test/setup.ts'],
