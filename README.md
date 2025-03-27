@@ -311,3 +311,8 @@ Agora seu projeto está protegido contra commits de código não formatado! 🚀
 # Configurando Storybook
 
 > npm create storybook@latest
+
+Escolha a opção sem testes, pois utilizaremos jest e testing library para isso. Ao instalar storybook, apenas exclua todos os documentos criados.
+Ele buscará pelos arquivos .stories e .mdx dentro de src, onde documentaremos nossos componentes em suas respectivas pastas.
+
+Para evitar que arquivos .husky ou .storybook sejam incluídos em nosso pacote, adicione o arquivo `.npmignore`

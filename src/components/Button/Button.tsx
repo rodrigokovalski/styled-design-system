@@ -1,5 +1,6 @@
-import { colors } from '../../tokens'
+import { StyledButton } from './Button.styles'
+import { ButtonProps } from './Button.types'
 
-export function Button() {
-    return <div style={{ color: colors.primary }}>Asd fasdfasdfasdfaqui</div>
+export function Button({ children }: ButtonProps) {
+    return <StyledButton>{children}</StyledButton>
 }
